@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,42 +7,23 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" href="/assets/favico/favicon.ico" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   <title>Rocketflix</title>
 </head>
 <body>
-  <div id="movie1">
-
+  <img src="./assets/shuffle.svg" class="logo" alt="">
+  <h1>Não sabe o que assistir?</h1>
+  <div class="container">
+    <div id="movieImage">
+      <img src="" id="moviePoster">
+    </div>
+    <div id="movieInfo">
+      <h2 id="movieTitle"></h2>
+      <span id="movieDesc"></span>
+    </div>
   </div>
-  <button onclick="getMovie(453395)">Click me</button> 
-  
-  <div style="background-color: red; width:100px; height:100px; color: white; margin-top: 25px;" onclick="wtfBro()">Click me</div> 
-
+  <button onclick="getPopularMovie()"><img src="./assets/shuffle.svg" id="button-img">Encontrar filme</button>
+  <p>Clique em "Encontrar filme" que traremos informações de um filme popular para você assistir hoje.</p>
   
   <script src="./main.js"></script>
 </body>
 </html>
-
-<!-- tmdb colors 
-
-Primary Color (Dark blue)
-Hex: #0d253f
-RGB: 13, 37, 63
-
-Secondary Color (Light blue)
-Hex: #01b4e4
-RGB: 1, 180, 228
-
-Tertiary Color (Light green)
-Hex: #90cea1
-RGB: 144, 206, 161
-
--->
-
-<!-- tmdb key v3
-6deb0d8ac5e8817e9d9d7b6c5127e97b
- -->
-
- <!-- tmdb key v4
-eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZGViMGQ4YWM1ZTg4MTdlOWQ5ZDdiNmM1MTI3ZTk3YiIsInN1YiI6IjYyZTQyMTU1ZmM1ZjA2MDA1OWMyNjRiZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BaTMIb9y6UQg7LCym4l2IbkYIqdnqzPqjFKCVf4AZA8
- -->
