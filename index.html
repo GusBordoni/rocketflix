@@ -12,18 +12,22 @@
 <body>
   <img src="./assets/shuffle.svg" class="logo" alt="">
   <h1>Não sabe o que assistir?</h1>
+  <button onclick="getRandomMovie()"><img src="./assets/shuffle.svg" id="button-img">Encontrar filme</button>
+  <p>Clique em "Encontrar filme" que traremos informações de um filme popular para você assistir hoje.</p>
   <div class="container">
     <div id="movieImage">
       <img src="" id="moviePoster">
     </div>
     <div id="movieInfo">
       <h2 id="movieTitle"></h2>
+      <p id="movieGenre"></p>
+      <p id="movieRating"></p>
       <span id="movieDesc"></span>
+      <p id="movieRuntime"></p>
+      <p id="movieRent"></p>
+      <p id="movieBuy"></p>
     </div>
   </div>
-  <button onclick="getPopularMovie()"><img src="./assets/shuffle.svg" id="button-img">Encontrar filme</button>
-  <p>Clique em "Encontrar filme" que traremos informações de um filme popular para você assistir hoje.</p>
-  
   <script src="./main.js"></script>
 </body>
 </html>
