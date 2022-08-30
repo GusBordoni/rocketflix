@@ -11,6 +11,7 @@ try {
   const genreList = [];
   const buyList = [];
   const rentList = [];
+  const streamList = [];
 
   const moviesPage = await axios.get(`${BASE_URL}popular?${API_KEY}&${language}&page=${randomPage}`)
   const movieID = await moviesPage.data.results[randomItem].id
@@ -19,17 +20,63 @@ try {
 
   const mLink = 'https://www.themoviedb.org/movie/' + movieDetails.data.id
 
-/*   console.log(movieDetails.data.id)
-  console.log(movieDetails.data) */
-  /* console.log(movieAvailability.data.results.BR.buy)
-  console.log(movieAvailability.data.results.BR.rent) */
 
-  for(i = 0; i < movieAvailability.data.results.BR.flatrate[0].length; i++){
-    buyList.push(movieAvailability.data.results.BR.flatrate[0].provider_name)
+  // where to watch
+  if((movieAvailability.data.results).hasOwnProperty('BR')) {
+    //available to buy?
+    if((movieAvailability.data.results.BR).hasOwnProperty('buy')) {
+      for(i = 0; i < movieAvailability.data.results.BR.buy.length; i++){
+        buyList.push(movieAvailability.data.results.BR.buy[i].provider_name)
+      }
+      if(buyList.length == 1) {
+        movieBuy.innerHTML = `<strong>Comprar em: </strong>` + buyList
+      } else if(buyList.length > 1){
+        movieBuy.innerHTML = `<strong>Comprar em: </strong>` + buyList.slice(0, -1).join(', ') + ' ou ' + buyList.slice(-1)
+      }
+      
+    } else {
+      movieBuy.textContent = ""
+    }
+    //available to rent?
+    if((movieAvailability.data.results.BR).hasOwnProperty('rent')) {
+      for(i = 0; i < movieAvailability.data.results.BR.rent.length; i++){
+        rentList.push(movieAvailability.data.results.BR.rent[i].provider_name)
+      }
+      if(rentList.length == 1) {
+        movieRent.innerHTML = `<strong>Alugue em: </strong>` + rentList
+      } else if(rentList.length > 1){
+        movieRent.innerHTML = `<strong>Alugue em: </strong>` + rentList.slice(0, -1).join(', ') + ' ou ' + rentList.slice(-1)
+      }
+      
+    } else {
+      movieRent.textContent = ""
+    }
+    //available on streaming?
+    if((movieAvailability.data.results.BR).hasOwnProperty('flatrate')) {
+      for(i = 0; i < movieAvailability.data.results.BR.flatrate.length; i++){
+        streamList.push(movieAvailability.data.results.BR.flatrate[i].provider_name)
+      }
+      if(streamList.length == 1) {
+        movieStream.innerHTML = `<strong>Assista na: </strong>` + streamList
+      } else if(streamList.length > 1){
+        movieStream.innerHTML = `<strong>Assista na: </strong>` + streamList.slice(0, -1).join(', ') + ' ou ' + streamList.slice(-1)
+      }
+      
+    } else {
+      movieStream.textContent = ""
+    }
+
+  } 
+
+  if(buyList.length == 0 && rentList == 0 && streamList == 0) {
+    movieBuy.textContent = 'Não disponível no Brasil.'
+    movieRent.textContent = ""
+    movieStream.textContent = ""
   }
-  console.log(movieAvailability.data.results.BR.flatrate[0].provider_name)
-// aquiiiiiiiiiiiiiiiiiiiiii
+  // where to watch END
+
   moviePoster.style.display = 'flex'
+  movieWhere.style.display = 'unset'
   moviePoster.src = IMG_URL+movieDetails.data.poster_path
   movieTitle.innerHTML = `<a href="${mLink}" target="_blank" class="titleLink"> ${movieDetails.data.title} (${movieDetails.data.release_date.slice(0,4)})</a>`
 

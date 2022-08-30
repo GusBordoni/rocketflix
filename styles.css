@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 :root {
-    --title: #fffcf9;
+    --title: #dbdbdb;
     --subtitle: #b3b3b3;
     --subsubtitle: #979797;
     --bg-button: #e9e6e3;
@@ -69,6 +69,10 @@ p {
     letter-spacing: -1px;
 }
 
+.titleLink:hover {
+    color: #FFFFFF;
+}
+
 #movieImage {
     display: flex;
     justify-content: end;
@@ -91,13 +95,25 @@ p {
 #movieRuntime {
     text-align: start;
     font-size: .85em;
-    margin-top: auto;
+    margin-top: 25px;
 }
 
 #movieRating {
     text-align: start;
     font-size: .85em;
     margin: -10px 0 10px 0;
+}
+
+#movieBuy, #movieRent, #movieStream {
+    text-align: start;
+    font-size: .85em;
+    font-weight: 400;
+}
+
+#movieWhere {
+    font-size: .85em;
+    display: none;
+    text-align: start;
 }
 
 .noDescLink {
